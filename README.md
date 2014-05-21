@@ -4,21 +4,23 @@ trans-mvc
 Write less, FUN More
 
 =================================
+
 Membuat Controller 
 
 file: home.php
-
+<pre>
 class Home_Conteroller{
   function index(){
   
   }
 }
+</pre>
 
 Membuat Model
 Model dibuat per table
 
 file user.php
-
+<pre>
 class user extend Model{
   public $table = 't_user';
   public $prmary_key = 'user_id';
@@ -36,10 +38,12 @@ class user extend Model{
     );
   }
 }
-
+</pre>
 Menggunakan model pada Controller
 
 1. Load model
+
+<pre>
 $user = load::model('user');
 // Mengambil data user
 $user->setLimit(10); // Set Limit
@@ -58,16 +62,19 @@ array(
   'records'=>array(......)
 );
 
-
+</pre>
+<pre>
 // Searching field
 $user->setKeyword('Agung'); // Keyword
 $user->setSearchIn('fullname'); // Field table
 var_dump($user->read());
-
+</pre>
+<pre>
 // Sort Order
 $user->setOrderBy('username');
 $user->setOrderTYpe('ASC'); // ASC atau DESC
-
+</pre>
+<pre>
 // Insert data
 $user->setData('username','BEJO');
 $user->setData('user_id','123123123');
@@ -77,18 +84,20 @@ atau
 
 $user->setDataArray($_POST);
 $user->insert();
-
+</pre>
+<pre>
 // Update Data
 
 $user->setId($_POST['user_id']);
 $user->setDataArray($_POST);
 $user->update();
-
+</pre>
+<pre>
 // Delete Data
 $user->setId($_POST['user_id']);
 $user->delete();
 
-
+</pre>
 
 
 
